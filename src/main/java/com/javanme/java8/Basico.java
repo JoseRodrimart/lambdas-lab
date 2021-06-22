@@ -1,6 +1,10 @@
 package com.javanme.java8;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Clase con ejercicios nivel básico
@@ -17,7 +21,8 @@ public class Basico {
      * @return Lista que contiene las palabras en mayúsculas
      */
     public List<String> ejercicio1(List<String> palabras) {
-        throw new UnsupportedOperationException();
+        palabras.replaceAll(String::toUpperCase);
+        return palabras;
     }
 
     /**
@@ -29,7 +34,7 @@ public class Basico {
      * @return lista que contiene cadenas de texto cuyo tamaño de caracteres es superior a 10
      */
     public List<String> ejercicio2(List<String> listado) {
-        throw new UnsupportedOperationException();
+        return listado.stream().filter(p -> p.length()>10).collect(Collectors.toList());
     }
 
     /**
@@ -38,11 +43,11 @@ public class Basico {
      *
      * @param listado cadenas de texto
      * @return Cadena de texto que se compone de la tercera, cuarta y quinta cadena de texto separadas por guiones
-     * @see java.util.stream.Stream
-     * @see java.util.stream.Collectors
+     * @see Stream
+     * @see Collectors
      */
-    public String ejercicio3(List<String> listado) {
-        throw new UnsupportedOperationException();
+    public String ejercicio3(List<String> listado) { //SIN COMPLETAR
+        return listado.stream().filter(p -> listado.get(2) == p || listado.get(3) == p || listado.get(4) == p).map(p->p.concat("-")).collect(Collectors.joining()).replaceAll(".$", "");
     }
 
     /**
@@ -56,7 +61,8 @@ public class Basico {
      * @see java.util.stream.Collectors
      */
     public List<Integer> ejercicio4(List<String> listado) {
-        throw new UnsupportedOperationException();
+        List<Integer> res = listado.stream().mapToInt(Integer::valueOf).sorted().boxed().collect(Collectors.toList());
+        return res;
     }
 
     /**
@@ -70,6 +76,7 @@ public class Basico {
      * @see java.util.stream.Collectors
      */
     public List<String> ejercicio5(List<String> listado) {
-        throw new UnsupportedOperationException();
+        List<String> res = listado.stream().sorted(Comparator.comparingInt(String::length)).sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        return res;
     }
 }

@@ -1,9 +1,12 @@
 package com.javanme.java8;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 /**
  * Clase con ejercicios nivel intermedio
@@ -23,8 +26,8 @@ public class Intermedio {
      * @see java.nio.file.Files
      * @see java.util.stream.Stream
      */
-    public long ejercicio1(Path archivo) {
-        throw new UnsupportedOperationException();
+    public long ejercicio1(Path archivo) throws IOException {
+        return Files.lines(archivo).filter(w->!w.isEmpty()).count();
     }
 
     /**
@@ -39,8 +42,8 @@ public class Intermedio {
      * @see java.util.stream.Stream
      * @see java.util.stream.IntStream
      */
-    public OptionalInt ejercicio2(Path archivo) {
-        throw new UnsupportedOperationException();
+    public OptionalInt ejercicio2(Path archivo) throws IOException {
+        return Files.lines(archivo).mapToInt(String::length).max();
     }
 
     /**
@@ -60,8 +63,8 @@ public class Intermedio {
      * @see java.lang.String
      * @see java.util.stream.Collectors
      */
-    public String ejercicio3(Path archivo) {
-        throw new UnsupportedOperationException();
+    public String ejercicio3(Path archivo) throws IOException {
+        return Files.lines(archivo).map(String::toLowerCase).distinct().sorted(String::compareTo).collect(Collectors.joining());
     }
 
     /**

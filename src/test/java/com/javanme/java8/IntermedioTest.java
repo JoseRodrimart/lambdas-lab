@@ -2,6 +2,7 @@ package com.javanme.java8;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,7 +22,7 @@ public class IntermedioTest {
     private Intermedio ejercicios = new Intermedio();
 
     @Test
-    public void ejercicio1() {
+    public void ejercicio1() throws IOException {
         Path archivo = Paths.get("CaliPachanguero.txt");
         if (Files.exists(archivo)) {
             long resultado = ejercicios.ejercicio1(archivo);
@@ -30,7 +31,7 @@ public class IntermedioTest {
     }
 
     @Test
-    public void ejercicio2() {
+    public void ejercicio2() throws IOException {
         Path archivo = Paths.get("CaliPachanguero.txt");
         if (Files.exists(archivo)) {
             OptionalInt resultado = ejercicios.ejercicio2(archivo);
@@ -39,7 +40,7 @@ public class IntermedioTest {
     }
 
     @Test
-    public void ejercicio3() {
+    public void ejercicio3() throws IOException {
         Path archivo = Paths.get("CaliPachanguero.txt");
         if (Files.exists(archivo)) {
             String resultado = ejercicios.ejercicio3(archivo);
